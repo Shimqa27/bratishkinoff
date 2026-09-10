@@ -246,7 +246,7 @@ function initNavSheet() {
     sheet.setAttribute('aria-modal', 'true');
     sheet.innerHTML = `
       <div class="nav-sheet-top">
-        <a href="/" class="hero-logo" aria-label="Grid01 Racing Systems" data-sheet-logo>
+        <a href="" class="hero-logo" aria-label="Grid01 Racing Systems" data-sheet-logo>
           <svg viewBox="0 0 210 42" width="120" height="24" fill="none"><text x="0" y="30" font-family="Oswald, sans-serif" font-weight="700" font-size="30" fill="currentColor">BRFF</text></svg>
         </a>
         <button class="nav-sheet-close" aria-label="Close menu" data-sheet-close><span></span><span></span></button>

@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BRATISHKIN</title>
+  <meta name="description" content="bratishkinoff" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap"
+    rel="stylesheet">
+
+  <style>
+    /* ============================================================
+   TOKENS — Tier 1 raw values
+   ============================================================ */
+    :root {
+      /* Palette — black / orange / gray */
+      --raw-color-coal-950: #0a0a0a;
+      --raw-color-coal-900: #141414;
+      --raw-color-coal-800: #1f1f1f;
+      --raw-color-coal-700: #2c2c2c;
+      --raw-color-smoke-300: #e6e3dd;
+      --raw-color-smoke-alpha-45: rgb(230 227 221 / 0.45);
+      --raw-color-smoke-alpha-14: rgb(230 227 221 / 0.14);
+      --raw-color-orange-500: #ff6a1a;
+      --raw-color-orange-alpha-25: rgb(255 106 26 / 0.25);
+      --raw-color-white: #ffffff;
+      --raw-color-white-alpha-40: rgb(255 255 255 / 0.4);
+
+      --raw-font-size-96: 6rem;
+      --raw-font-size-70: 4.375rem;
+      --raw-font-size-52: 3.25rem;
+      --raw-font-size-38: 2.375rem;
+      --raw-font-size-20: 1.25rem;
+      --raw-font-size-18: 1.125rem;
+      --raw-font-size-16: 1rem;
+      --raw-font-size-14: 0.875rem;
+      --raw-font-size-12: 0.75rem;
+
+      /* Tier 2 — roles */
+      --background: var(--raw-color-coal-950);
+      --foreground: var(--raw-color-smoke-300);
+      --foreground-muted: var(--raw-color-smoke-alpha-45);
+      --surface-black: var(--raw-color-coal-900);
+      --surface-soft: var(--raw-color-coal-800);
+      --border-muted: var(--raw-color-smoke-alpha-14);
+      --accent: var(--raw-color-orange-500);
+      --accent-muted: var(--raw-color-orange-alpha-25);
+
+      --type-impact: var(--raw-font-size-96);
+      --type-display-lg: var(--raw-font-size-70);
+      --type-display: var(--raw-font-size-52);
+      --type-heading: var(--raw-font-size-38);
+      --type-title: var(--raw-font-size-20);
+      --type-lead: var(--raw-font-size-18);
+      --type-label: var(--raw-font-size-16);
+      --type-body: var(--raw-font-size-14);
+      --type-eyebrow: var(--raw-font-size-12);
+
+      --ease-entrance: cubic-bezier(0.2, 0, 0, 1);
+      --ease-plate: cubic-bezier(0.33, 0, 0, 1);
+      --font-sans: "Space Grotesk", system-ui, sans-serif;
+      --font-display: "Oswald", Impact, sans-serif;
+    }
+
+    /* Root font-size bands */
+    html {
+      font-size: 16px;
+      overflow-x: hidden;
+      /* убирает саму причину появления горизонтальной полосы */
+      scrollbar-width: none;
+      /* Firefox — прячет скроллбар полностью */
+      -ms-overflow-style: none;
+    }
+
+    html::-webkit-scrollbar,
+    body::-webkit-scrollbar {
+      display: none;
+      /* Chrome/Safari/Edge — прячет скроллбар полностью */
+    }
+
+    @media (max-width:1920px) {
+      html {
+        font-size: 0.833333vw;
+      }
+    }
+
+    @media (max-width:1440px) {
+      html {
+        font-size: 1.111111vw;
+      }
+    }
+
+    @media (max-width:1279px) {
+      html {
+        font-size: 16px;
+      }
+    }
+
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--background);
+      color: var(--foreground);
+      min-height: 100lvh;
+      margin: 0;
+      font-family: var(--font-sans);
+      scroll-behavior: smooth;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    button {
+      font: inherit;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: inherit;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    dl,
+    dt,
+    dd {
+      margin: 0;
+    }
+
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+    }
+
+    /* ============================================================
+   1441–1920 band: hero drawn at 1440, band based on 1920
+   ============================================================ */
+    @media (min-width:1441px) and (max-width:1920px) {
+      [data-hero] {
+        --hero-base: calc(1920 / 1440);
+        --type-impact: calc(6rem * var(--hero-base));
+        --type-display-lg: calc(4.375rem * var(--hero-base));
+        --type-display: calc(3.25rem * var(--hero-base));
+        --type-heading: calc(2.375rem * var(--hero-base));
+        --type-title: calc(1.25rem * var(--hero-base));
+        --type-lead: calc(1.125rem * var(--hero-base));
+        --type-label: calc(1rem * var(--hero-base));
+        --type-body: calc(0.875rem * var(--hero-base));
+        --type-eyebrow: calc(0.75rem * var(--hero-base));
+      }
+
+      [data-hero] [data-hero-panels] {
+        width: calc(13.625rem * var(--hero-base, 1));
+      }
+
+      [data-hero] [data-hero-stats] {
+        width: calc(10.75rem * var(--hero-base, 1));
+      }
+    }
+  </style>
+
+  <style id="hero-styles"></style>
+
+  <!-- ============================================================
+       SECTION TRANSITIONS — plavnye pereходы между секциями
+       ============================================================ -->
+  <style id="section-transitions">
+    [data-screen-label] {
+      position: relative;
+      opacity: 0;
+      transform: translateY(64px);
+      transition:
+        opacity 1.1s var(--ease-entrance),
+        transform 1.1s var(--ease-entrance);
+      will-change: opacity, transform;
+    }
+
+    [data-screen-label].in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* мягкий градиентный "мостик" сверху каждой секции —
+       размывает стык с предыдущим фоном вместо жёсткой линии */
+    [data-screen-label]::before {
+      content: "";
+      position: absolute;
+      inset-inline: 0;
+      top: 0;
+      height: min(18vh, 180px);
+      pointer-events: none;
+      z-index: 5;
+      background: linear-gradient(to bottom,
+          var(--section-bg, #040405) 0%,
+          transparent 100%);
+      opacity: .9;
+    }
+
+    /* первая секция после hero — мостик тянем от чёрного фона hero */
+    .hero+[data-screen-label]::before {
+      background: linear-gradient(to bottom,
+          var(--background) 0%,
+          transparent 100%);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      [data-screen-label] {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ============================================================
+     LOADING VEIL
+     ============================================================ -->
+  <div class="veil" data-veil role="status" aria-label="Loading Grid01 Racing Systems">
+    <div class="veil-mark" data-veil-mark>
+      <div class="veil-mark-shell"></div>
+      <div class="veil-mark-fill" data-veil-fill></div>
+    </div>
+    <p class="veil-name" data-veil-name>VOVAN BRATISHKIN</p>
+    <div class="veil-meter" data-veil-meter>
+      <div class="veil-meter-fill" data-veil-meter-fill></div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+     HERO
+     ============================================================ -->
+  <section class="hero" data-hero aria-label="Kimi Antonelli — driver profile">
+
+    <!-- САМЫЙ НИЖНИЙ СЛОЙ: заливка, ниже картинок -->
+    <h1 class="hero-name" data-text-reveal data-reveal-mode="word" data-stagger="110"> BRATISHKIN</h1>
+
+    <canvas class="hero-scene" data-hero-canvas aria-hidden="true"></canvas>
+    <div class="hero-scrim" aria-hidden="true"></div>
+    <div class="hero-ramp" aria-hidden="true"></div>
+
+    <!-- НАД КАРТИНКАМИ, НО ПОД КОНТЕНТОМ: прозрачная заливка + оранжевый контур -->
+    <p class="hero-name hero-name-outline" aria-hidden="true">BRATISHKIN</p>
+
+    <div class="hero-content">
+
+      <header class="hero-masthead">
+        <a href="" class="hero-logo" aria-label="Grid01 Racing Systems">
+          <svg viewBox="0 0 210 42" width="120" height="24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <text x="0" y="30" font-family="Oswald, sans-serif" font-weight="700" font-size="30" letter-spacing="-0.5"
+              fill="currentColor">BRFF</text>
+          </svg>
+        </a>
+
+        <nav class="hero-nav" aria-label="Primary">
+          <ul>
+            <li><a href="https://www.twitch.tv/bratishkinoff">TWITCH</a></li>
+            <li><a href="https://ue.bot/">YEBOT</a></li>
+            <li><a href="https://www.instagram.com/br4tishkin/?utm_source=ig_web_button_share_sheet">INSTAGRAM</a></li>
+            <li><a href="https://t.me/nebudetafk">TELEGRAM</a></li>
+          </ul>
+        </nav>
+
+        <a href="https://eblo.id/" class="hero-garage">
+          <span aria-hidden="true">[ </span>EBLO.ID<span aria-hidden="true"> &rarr; ]</span>
+        </a>
+
+        <button class="hero-burger" data-burger-open aria-label="Open menu" aria-haspopup="dialog">
+          <span></span><span></span>
+        </button>
+      </header>
+
+      <div class="hero-middle">
+
+        <div class="hero-identity">
+          <p class="hero-id" data-reveal-fade>streamer_89</p>
+
+          <div class="hero-meta" role="list">
+            <div class="hero-meta-row" data-reveal-rise role="listitem">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M8 1L14.5 4.5V11.5L8 15L1.5 11.5V4.5L8 1Z" stroke="currentColor" stroke-width="1" />
+                <path d="M8 5L11 6.5V9.5L8 11L5 9.5V6.5L8 5Z" stroke="currentColor" stroke-width="1" />
+              </svg>
+              <span>SLAY KING 2023/24</span>
+            </div>
+            <div class="hero-meta-row" data-reveal-rise role="listitem">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1" />
+                <path d="M2 7H12M7 2V12" stroke="currentColor" stroke-width="0.75" />
+              </svg>
+              <span>LEGENDA_AFK</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-panels" data-hero-panels data-reveal-rise>
+          <div class="bracket-panel">
+            <p class="panel-eyebrow">BIRTHSDAY</p>
+            <dl class="race-dl">
+              <dt>RUSSIA/MOSCOW</dt>
+              <dd><time datetime="2026-07-27">20 MAY 1998</time></dd>
+            </dl>
+          </div>
+
+          <div class="bracket-panel">
+            <p class="panel-eyebrow">INFO</p>
+            <dl class="stats-dl" data-hero-stats>
+              <div>
+                <dt>FOLLOWERS</dt>
+                <dd data-letter-reveal data-reveal-mode="letter" data-stagger="26">3.7m</dd>
+              </div>
+              <div>
+                <dt>AGE</dt>
+                <dd data-letter-reveal data-reveal-mode="letter" data-stagger="26">28</dd>
+              </div>
+              <div>
+                <dt>IQ</dt>
+                <dd data-letter-reveal data-reveal-mode="letter" data-stagger="26">89</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="hero-actions" data-reveal-rise>
+        <a href="https://www.youtube.com/watch?v=j-iheFkstFQ" class="hero-cta">
+          <svg class="hero-cta-frame" viewBox="0 0 220 50" preserveAspectRatio="none" aria-hidden="true">
+            <path class="hero-cta-body" d="M220 42L212.932 50H0V0H220V42Z" fill="var(--surface-black)" />
+            <path class="hero-cta-flood" d="M220 42L212.932 50H0V0H220V42Z" fill="var(--accent)" />
+            <path class="hero-cta-ring" d="M220 42L212.932 50H0V0H220V42Z" fill="none" stroke="var(--accent)"
+              stroke-opacity="0.25" />
+            <path class="hero-cta-brackets"
+              d="M205 49.5H213L219.5 42V36 M212 0.5H219.5V7 M8 0.5H0.5V7 M7.5 49.5H0.5V42.5" stroke="var(--accent)"
+              fill="none" />
+          </svg>
+          <span class="hero-cta-content">
+            <span class="hero-cta-label">view profile</span>
+            <svg class="hero-cta-arrow" viewBox="0 0 13.7071 10.7071" aria-hidden="true">
+              <path d="M0 5.35355H13M8 10.3536L13 5.35355L8 0.353553" stroke="currentColor" fill="none" />
+            </svg>
+          </span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <section data-screen-label="Signal Bleed" data-section-bg="#040405"
+    style="position:relative;padding:0 0 min(14vh,120px);background:#040405;padding-top:70px;">
+    <div style="max-width:1500px;margin:0 auto;padding:0 28px;margin-top:40px">
+      <h2
+        style="margin:0 0 clamp(24px,4vw,56px);text-align:center;font-family:'Oswald', Impact, sans-serif;font-weight:700;font-size:clamp(32px,5.5vw,72px);line-height:.95;letter-spacing:-.02em;text-transform:uppercase;color:#ff6a1a">
+        ГОРДОСТЬ ТВИЧА</h2>
+      <div class="ev-grid">
+
+        <figure class="ev-media">
+          <img class="ev-img ev-img-a" src="img/Screenshot_37.png" alt="">
+          <img class="ev-img ev-img-b" src="img/Bratishkin_d.jpg" alt="">
+          <div class="ev-slices" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <figcaption>
+            <span>01 / SLAY</span>
+          </figcaption>
+        </figure>
+
+        <figure class="ev-media">
+          <img class="ev-img ev-img-a" src="img/5ff916c280289cf0d9c47d7e62686572.jpg" alt="">
+          <img class="ev-img ev-img-b" src="img/Screenshot_1.png" alt="">
+          <div class="ev-slices" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <figcaption>
+            <span>02 / Animals love</span>
+          </figcaption>
+        </figure>
+
+        <figure class="ev-media">
+          <img class="ev-img ev-img-a" src="img/a7b12e5ac46e7b05a20713a04548d.webp" alt="">
+          <img class="ev-img ev-img-b" src="img\ebaed816914794e1e979d9ae60c262b3.jpg" alt="">
+          <div class="ev-slices" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <figcaption>
+            <span>03 / Family story</span>
+          </figcaption>
+        </figure>
+
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Flashlight Dark" data-flashlight data-section-bg="#010101"
+    style="position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#010101;overflow:hidden;border-top:1px solid rgba(230,227,221,.08);border-bottom:1px solid rgba(230,227,221,.08)">
+
+    <div class="fl-photos">
+      <div class="fl-photo-wrap" data-fl-photo
+        style="position:absolute;left:8%;top:16%;width:min(24vw,300px);aspect-ratio:4/3;">
+        <img src="img\07952384ea4c8a200678548ade6aff75.jpg" alt=""
+          style="width:100%;height:100%;object-fit:cover;display:block;transform:rotate(-4deg);border:1px solid rgba(255,106,26,.3)">
+      </div>
+
+      <div class="fl-photo-wrap" data-fl-photo
+        style="position:absolute;right:9%;top:13%;width:min(20vw,260px);aspect-ratio:3/4;">
+        <img src="img\images (1).jpeg" alt=""
+          style="width:100%;height:100%;object-fit:cover;display:block;transform:rotate(3deg);border:1px solid rgba(255,106,26,.3)">
+      </div>
+
+      <div class="fl-photo-wrap" data-fl-photo
+        style="position:absolute;left:14%;bottom:14%;width:min(22vw,280px);aspect-ratio:4/3;">
+        <img src="img\images.jpeg" alt=""
+          style="width:100%;height:100%;object-fit:cover;display:block;transform:rotate(2deg);border:1px solid rgba(255,106,26,.3)">
+      </div>
+
+      <div class="fl-photo-wrap" data-fl-photo
+        style="position:absolute;right:16%;bottom:14%;width:min(20vw,260px);aspect-ratio:1/1;">
+        <img src="img\Screenshot_2.png" alt=""
+          style="width:100%;height:100%;object-fit:cover;display:block;transform:rotate(-2deg);border:1px solid rgba(255,106,26,.3)">
+      </div>
+    </div>
+
+    <div class="fl-cover" data-fl-cover></div>
+
+    <div style="position:relative;z-index:3;text-align:center;padding:0 28px;max-width:900px">
+      <h2 data-reveal
+        style="margin:0;font-weight:900;font-size:clamp(40px,7.5vw,124px);line-height:.88;letter-spacing:-.04em;text-transform:uppercase;color:#e6e3dd">
+        Найди<br>Шефчика</h2>
+      <p data-reveal
+        style="margin:26px auto 0;max-width:52ch;font-family:'Courier Prime',ui-monospace,monospace;font-size:14px;line-height:2;color:#8f8a83">
+        Найди 4 Вовчика и твой iq будет выше 89
+      </p>
+    </div>
+  </section>
+
+  <section data-screen-label="Circular Gallery" data-hcircle data-section-bg="#040405"
+    style="position:relative;background:#040405;">
+
+    <div data-hcircle-sticky style="position:sticky;top:0;height:100vh;overflow:hidden;">
+      <!-- ===== LAYERED MOTION ATMOSPHERE ===== -->
+      <div class="atmo" aria-hidden="true">
+        <div class="atmo-layer atmo-layer-1" data-atmo-depth="0.15">
+          <span class="atmo-blob atmo-blob-a"></span>
+          <span class="atmo-blob atmo-blob-b"></span>
+        </div>
+        <div class="atmo-layer atmo-layer-2" data-atmo-depth="0.35">
+          <span class="atmo-blob atmo-blob-c"></span>
+          <span class="atmo-blob atmo-blob-d"></span>
+        </div>
+        <div class="atmo-layer atmo-layer-3" data-atmo-depth="0.6">
+          <span class="atmo-particle" style="left:12%;top:20%;animation-delay:0s;"></span>
+          <span class="atmo-particle" style="left:28%;top:70%;animation-delay:1.2s;"></span>
+          <span class="atmo-particle" style="left:48%;top:35%;animation-delay:2.4s;"></span>
+          <span class="atmo-particle" style="left:66%;top:60%;animation-delay:.6s;"></span>
+          <span class="atmo-particle" style="left:78%;top:22%;animation-delay:1.8s;"></span>
+          <span class="atmo-particle" style="left:88%;top:75%;animation-delay:3s;"></span>
+          <span class="atmo-particle" style="left:35%;top:85%;animation-delay:2s;"></span>
+          <span class="atmo-particle" style="left:58%;top:12%;animation-delay:.9s;"></span>
+        </div>
+        <div class="atmo-grain"></div>
+        <div class="atmo-vignette"></div>
+      </div>
+      <h2 class="hc-title" aria-hidden="false">
+        Милые<br>моменты
+      </h2>
+
+      <div data-hcircle-stage style="position:relative;width:100%;height:100%;">
+
+        <figure class="hc-item" data-hc-item
+          style="position:absolute;left:50%;top:50%;margin:0;width:min(48vw,420px);aspect-ratio:4/5;overflow:hidden;border:1px solid rgba(255,106,26,.25);background:#141414;">
+          <img src="https://media1.tenor.com/m/nt_IwoaQCDAAAAAd/89squad-bratishkinoff.gif" alt=""
+            style="width:100%;height:100%;object-fit:cover;display:block;">
+          <figcaption
+            style="position:absolute;left:16px;bottom:14px;font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:.05em;text-transform:uppercase;color:#e6e3dd;">
+            01 / Чача</figcaption>
+        </figure>
+
+        <figure class="hc-item" data-hc-item
+          style="position:absolute;left:50%;top:50%;margin:0;width:min(48vw,420px);aspect-ratio:4/5;overflow:hidden;border:1px solid rgba(255,106,26,.25);background:#141414;">
+          <img src="https://media1.tenor.com/m/ToE16WgXe7cAAAAd/89squad-bratishkinoff.gif" alt=""
+            style="width:100%;height:100%;object-fit:cover;display:block;">
+          <figcaption
+            style="position:absolute;left:16px;bottom:14px;font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:.05em;text-transform:uppercase;color:#e6e3dd;">
+            02 / Шумный, но безопасный</figcaption>
+        </figure>
+
+        <figure class="hc-item" data-hc-item
+          style="position:absolute;left:50%;top:50%;margin:0;width:min(48vw,420px);aspect-ratio:4/5;overflow:hidden;border:1px solid rgba(255,106,26,.25);background:#141414;">
+          <img src="img\Братишкина ослепила вспышка Twich moments (online-video-cutter.com).gif" alt=""
+            style="width:100%;height:100%;object-fit:cover;display:block;">
+          <figcaption
+            style="position:absolute;left:16px;bottom:14px;font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:.05em;text-transform:uppercase;color:#e6e3dd;">
+            03 / Вспышка</figcaption>
+        </figure>
+
+        <figure class="hc-item" data-hc-item
+          style="position:absolute;left:50%;top:50%;margin:0;width:min(48vw,420px);aspect-ratio:4/5;overflow:hidden;border:1px solid rgba(255,106,26,.25);background:#141414;">
+          <img src="https://media1.tenor.com/m/FMtoxYMaJxMAAAAd/bratishkinoff-bratishkin.gif" alt=""
+            style="width:100%;height:100%;object-fit:cover;display:block;">
+          <figcaption
+            style="position:absolute;left:16px;bottom:14px;font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:.05em;text-transform:uppercase;color:#e6e3dd;">
+            04 / Донатики</figcaption>
+        </figure>
+
+        <figure class="hc-item" data-hc-item
+          style="position:absolute;left:50%;top:50%;margin:0;width:min(48vw,420px);aspect-ratio:4/5;overflow:hidden;border:1px solid rgba(255,106,26,.25);background:#141414;">
+          <img src="https://media1.tenor.com/m/0LhxSLtZ8ZcAAAAd/pot-bratishkinoff.gif" alt=""
+            style="width:100%;height:100%;object-fit:cover;display:block;">
+          <figcaption
+            style="position:absolute;left:16px;bottom:14px;font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:.05em;text-transform:uppercase;color:#e6e3dd;">
+            06 / Кастрюшкин</figcaption>
+        </figure>
+        <figure class="hc-item" data-hc-item
+          style="position:absolute;left:50%;top:50%;margin:0;width:min(48vw,420px);aspect-ratio:4/5;overflow:hidden;border:1px solid rgba(255,106,26,.25);background:#141414;">
+          <img src="img\bratishkinoff-vova.gif" alt="" style="width:100%;height:100%;object-fit:cover;display:block;">
+          <figcaption
+            style="position:absolute;left:16px;bottom:14px;font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:.05em;text-transform:uppercase;color:#e6e3dd;">
+            07 / Баскетболишкин</figcaption>
+        </figure>
+        <figure class="hc-item" data-hc-item
+          style="position:absolute;left:50%;top:50%;margin:0;width:min(48vw,420px);aspect-ratio:4/5;overflow:hidden;border:1px solid rgba(255,106,26,.25);background:#141414;">
+          <img src="img\БРАТИШКИНА_ОГРАБИЛИ_ЧЕЧЕНЦЫ_НА_5_МИЛЛИОНОВ (online-video-cutter.com).gif" alt=""
+            style="width:100%;height:100%;object-fit:cover;display:block;">
+          <figcaption
+            style="position:absolute;left:16px;bottom:14px;font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:.05em;text-transform:uppercase;color:#e6e3dd;">
+            08 / Простите</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Weightless Float" data-weightless data-section-bg="#040405"
+    style="position:relative;background:#040405;">
+
+    <div data-weightless-sticky
+      style="position:sticky;top:0;height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center;">
+
+      <p
+        style="position:absolute;top:6vh;left:50%;transform:translateX(-50%);z-index:5;margin:0;font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:#8f8a83;">
+        Наш самый любимый канал
+      </p>
+
+      <!-- ===== БОКОВЫЕ КАРТИНКИ, ЕДУТ ВВЕРХ ПРИ СКРОЛЛЕ ===== -->
+      <div class="float-field">
+
+        <!-- ===== ЛЕВАЯ СТОРОНА — ряд 1 ===== -->
+        <figure class="float-item" data-float-item style="--x:2%; --w:150px; --speed:1.6; --rot:8deg; --start-y:70vh;">
+          <img src="img\emoji1.png" alt="">
+        </figure>
+        <figure class="float-item" data-float-item style="--x:6%; --w:180px; --speed:0.9; --rot:14deg; --start-y:22vh;">
+          <img src="img\emoji2.png" alt="">
+        </figure>
+        <figure class="float-item" data-float-item
+          style="--x:16%; --w:130px; --speed:1.4; --rot:-10deg; --start-y:55vh;">
+          <img src="img\emoji3.png" alt="">
+        </figure>
+        <figure class="float-item" data-float-item
+          style="--x:22%; --w:110px; --speed:1.8; --rot:10deg; --start-y:88vh;">
+          <img src="img\emoji4.png" alt="">
+        </figure>
+        <figure class="float-item" data-float-item style="--x:10%; --w:95px; --speed:1.1; --rot:-14deg; --start-y:8vh;">
+          <img src="img\emoji5.png" alt="">
+        </figure>
+        <figure class="float-item" data-float-item
+          style="--x:26%; --w:100px; --speed:0.8; --rot:12deg; --start-y:38vh;">
+          <img src="img\emoji6.png" alt="">
+        </figure>
+        <figure class="float-item" data-float-item style="--x:1%; --w:120px; --speed:1.3; --rot:-9deg; --start-y:95vh;">
+          <img src="img\emoji7.png" alt="">
+        </figure>
+        <figure class="float-item" data-float-item style="--x:19%; --w:140px; --speed:1.0; --rot:16deg; --start-y:5vh;">
+          <img src="img\emoji8.png" alt="">
+        </figure>
+
+        <!-- ===== ПРАВАЯ СТОРОНА — ряд 1 ===== -->
+        <figure class="float-item" data-float-item
+          style="--x:80%; --w:170px; --speed:1.1; --rot:12deg; --start-y:18vh;">
+          <img src="img\emoji1.png" alt="">
+        </figure>
+        <figure class="float-item" data-float-item
+          style="--x:90%; --w:120px; --speed:0.7; --rot:-16deg; --start-y:48vh;">
+          <img src="img\emoji2.png" alt="">
+        </figure>
+        <figure class="float-item" data-float-item
+          style="--x:94%; --w:140px; --speed:1.2; --rot:-12deg; --start-y:75vh;">
+          <img src="img\emoji3.png" alt="">
+        </figure>
+        <figure class="float-item" data-float-item
+          style="--x:72%; --w:125px; --speed:1.5; --rot:-8deg; --start-y:90vh;">
+          <img src="img\emoji4.png" alt="">
+        </figure>
+        <figure class="float-item" data-float-item style="--x:86%; --w:100px; --speed:1.7; --rot:9deg; --start-y:6vh;">
+          <img src="img\emoji5.png" alt="">
+        </figure>
+        <figure class="float-item" data-float-item
+          style="--x:96%; --w:90px; --speed:0.9; --rot:-13deg; --start-y:35vh;">
+          <img src="img\emoji6.png" alt="">
+        </figure>
+        <figure class="float-item" data-float-item
+          style="--x:76%; --w:115px; --speed:1.3; --rot:15deg; --start-y:60vh;">
+          <img src="img\emoji7.png" alt="">
+        </figure>
+        <figure class="float-item" data-float-item
+          style="--x:82%; --w:135px; --speed:1.0; --rot:-11deg; --start-y:96vh;">
+          <img src="img\emoji8.png" alt="">
+        </figure>
+
+        <!-- ===== ЛЕВАЯ СТОРОНА — ряд 2 (стартуют ниже экрана, появятся при дальнейшем скролле) ===== -->
+        <figure class="float-item" data-float-item
+          style="--x:4%; --w:110px; --speed:1.2; --rot:-11deg; --start-y:130vh;">
+          <img src="img\emoji1.png" alt="">
+        </figure>
+        <figure class="float-item" data-float-item
+          style="--x:12%; --w:150px; --speed:0.8; --rot:9deg; --start-y:150vh;">
+          <img src="img\emoji2.png" alt="">
+        </figure>
+        <figure class="float-item" data-float-item
+          style="--x:24%; --w:95px; --speed:1.6; --rot:-13deg; --start-y:120vh;">
+          <img src="img\emoji3.png" alt="">
+        </figure>
+        <figure class="float-item" data-float-item
+          style="--x:8%; --w:130px; --speed:1.0; --rot:15deg; --start-y:165vh;">
+          <img src="img\emoji4.png" alt="">
+        </figure>
+        <figure class="float-item" data-float-item
+          style="--x:18%; --w:85px; --speed:1.5; --rot:-8deg; --start-y:110vh;">
+          <img src="img\emoji5.png" alt="">
+        </figure>
+        <figure class="float-item" data-float-item
+          style="--x:2%; --w:105px; --speed:0.9; --rot:12deg; --start-y:180vh;">
+          <img src="img\emoji6.png" alt="">
+        </figure>
+        <figure class="float-item" data-float-item
+          style="--x:28%; --w:125px; --speed:1.3; --rot:-15deg; --start-y:140vh;">
+          <img src="img\emoji7.png" alt="">
+        </figure>
+        <figure class="float-item" data-float-item
+          style="--x:14%; --w:100px; --speed:1.7; --rot:7deg; --start-y:170vh;">
+          <img src="img\emoji8.png" alt="">
+        </figure>
+
+        <!-- ===== ПРАВАЯ СТОРОНА — ряд 2 (стартуют ниже экрана) ===== -->
+        <figure class="float-item" data-float-item
+          style="--x:78%; --w:120px; --speed:1.4; --rot:-9deg; --start-y:125vh;">
+          <img src="img\emoji1.png" alt="">
+        </figure>
+        <figure class="float-item" data-float-item
+          style="--x:88%; --w:90px; --speed:1.8; --rot:11deg; --start-y:155vh;">
+          <img src="img\emoji2.png" alt="">
+        </figure>
+        <figure class="float-item" data-float-item
+          style="--x:92%; --w:135px; --speed:0.7; --rot:-14deg; --start-y:115vh;">
+          <img src="img\emoji3.png" alt="">
+        </figure>
+        <figure class="float-item" data-float-item
+          style="--x:70%; --w:100px; --speed:1.1; --rot:13deg; --start-y:175vh;">
+          <img src="img\emoji4.png" alt="">
+        </figure>
+        <figure class="float-item" data-float-item
+          style="--x:84%; --w:145px; --speed:1.6; --rot:-10deg; --start-y:105vh;">
+          <img src="img\emoji5.png" alt="">
+        </figure>
+        <figure class="float-item" data-float-item style="--x:98%; --w:85px; --speed:1.0; --rot:8deg; --start-y:160vh;">
+          <img src="img\emoji6.png" alt="">
+        </figure>
+        <figure class="float-item" data-float-item
+          style="--x:74%; --w:115px; --speed:1.5; --rot:-12deg; --start-y:190vh;">
+          <img src="img\emoji7.png" alt="">
+        </figure>
+        <figure class="float-item" data-float-item
+          style="--x:80%; --w:130px; --speed:0.9; --rot:16deg; --start-y:145vh;">
+          <img src="img\emoji8.png" alt="">
+        </figure>
+
+      </div>
+
+      <!-- ===== ЦЕНТРАЛЬНАЯ СТАТИЧНАЯ КАРТИНКА, НЕ МЕНЯЕТСЯ ===== -->
+      <div class="weightless-center">
+        <img src="img\logobrff.png" alt="">
+      </div>
+
+    </div>
+  </section>
+  <section data-screen-label="Love Line" data-love-line
+    style="position:relative;background:#040405;padding:min(14vh,140px) 0 0;overflow:hidden;">
+
+    <h2 data-reveal
+      style="position:relative;z-index:5;margin:0 0 clamp(48px,8vw,120px);text-align:center;font-family:'Oswald', Impact, sans-serif;font-weight:700;font-size:clamp(32px,5.5vw,72px);line-height:.95;letter-spacing:-.02em;text-transform:uppercase;color:#e6e3dd;">
+      ЛЮБОВНАЯ <span style="color:#ff6a1a">ЛИНИЯ</span>
+    </h2>
+
+    <!-- ===== ЦЕНТРАЛЬНАЯ ЛИНИЯ ===== -->
+    <div class="love-track" data-love-track
+      style="position:absolute;left:50%;top:0;bottom:0;width:2px;transform:translateX(-50%);background:rgba(255,106,26,.14);">
+      <div class="love-fill" data-love-fill></div>
+    </div>
+
+    <!-- ===== СТОП 1: картинка слева, текст справа ===== -->
+    <div class="love-stop" data-love-stop
+      style="position:relative;max-width:1400px;margin:0 auto;padding:0 28px;display:flex;align-items:center;min-height:65vh;">
+
+      <div class="love-media" data-love-media style="width:42%;">
+        <img src="img/love1.jpg" alt="" style="width:100%;display:block;border:1px solid rgba(255,106,26,.25);">
+      </div>
+
+      <div class="love-ball" data-love-ball></div>
+
+      <div class="love-text" data-love-text style="width:42%;margin-left:auto;text-align:left;">
+        <p class="love-eyebrow">01 / Аминочка</p>
+        <p class="love-body">История их была не такой длинной, но очень яркой. Большая часть олдов точно помнит эти
+          милые моменты.</p>
+      </div>
+
+    </div>
+
+    <!-- ===== СТОП 2: картинка справа, текст слева ===== -->
+    <div class="love-stop" data-love-stop
+      style="position:relative;max-width:1400px;margin:0 auto;padding:0 28px;display:flex;align-items:center;min-height:65vh;">
+
+      <div class="love-text" data-love-text style="width:42%;text-align:right;">
+        <p class="love-eyebrow">02 / Лешенька</p>
+        <p class="love-body">Любовь, которая загорелась раз и не погаснет больше никогда. Интрижка, от которой больнее,
+          чем от долгих отношений.</p>
+      </div>
+
+      <div class="love-ball" data-love-ball></div>
+
+      <div class="love-media" data-love-media style="width:42%;margin-left:auto;">
+        <img src="img/love2.jpg" alt="" style="width:100%;display:block;border:1px solid rgba(255,106,26,.25);">
+      </div>
+
+    </div>
+
+    <!-- ===== СТОП 3: картинка слева, текст справа ===== -->
+    <div class="love-stop" data-love-stop
+      style="position:relative;max-width:1400px;margin:0 auto;padding:0 28px;display:flex;align-items:center;min-height:65vh;">
+
+      <div class="love-media" data-love-media style="width:42%;">
+        <img src="img/love3.jpg" alt="" style="width:100%;display:block;border:1px solid rgba(255,106,26,.25);">
+      </div>
+
+      <div class="love-ball" data-love-ball></div>
+
+      <div class="love-text" data-love-text style="width:42%;margin-left:auto;text-align:left;">
+        <p class="love-eyebrow">03 / Серёжа</p>
+        <p class="love-body">Серёжа был для Вовы одним таким. Много ссор, но так же много и перемирий. В яростных
+          отрицаниях внутри они всё равно знают, что любят друг друга.</p>
+      </div>
+
+    </div>
+
+    <!-- ===== СТОП 4: картинка справа, текст слева ===== -->
+    <div class="love-stop" data-love-stop
+      style="position:relative;max-width:1400px;margin:0 auto;padding:0 28px;display:flex;align-items:center;min-height:65vh;">
+
+      <div class="love-text" data-love-text style="width:42%;text-align:right;">
+        <p class="love-eyebrow">04 / Ванюша</p>
+        <p class="love-body">Ныняшняя любовница Вовы — молоденький и милый Дипинс. Их история очень милая: в ней не было
+          сильных ссор, всё было стабильно.</p>
+      </div>
+
+      <div class="love-ball" data-love-ball></div>
+
+      <div class="love-media" data-love-media style="width:42%;margin-left:auto;">
+        <img src="img/love4.jpg" alt="" style="width:100%;display:block;border:1px solid rgba(255,106,26,.25);">
+      </div>
+
+    </div>
+
+    <!-- ===== СТОП 5 (ФИНАЛ): шарик сверху, картинка и текст — под ним ===== -->
+    <div class="love-stop love-stop--final" data-love-stop data-love-final
+      style="position:relative;max-width:700px;margin:0 auto;padding:0 28px;display:flex;flex-direction:column;align-items:center;text-align:center;min-height:70vh;justify-content:center;">
+
+      <div class="love-ball love-ball--final" data-love-ball></div>
+
+      <div class="love-media" data-love-media style="width:min(60vw,460px);margin:28px auto 0;">
+        <img src="img/love5.jpg" alt="" style="width:100%;display:block;border:1px solid rgba(255,106,26,.25);">
+      </div>
+
+      <div class="love-text" data-love-text style="width:100%;text-align:center;margin-top:28px;">
+        <p class="love-eyebrow">05 / Алиночка</p>
+        <p class="love-body" style="margin:0 auto;">Но всё же главной любовью Вовы остаётся Алиночка. Алина — лучшая
+          девушка, по словам Вовы, ну и, естественно, с этим многие согласятся. Не зря же реакции на YouTube такие
+          популярные.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+  <div class="stage">
+    <div class="topbar">
+      <div class="logo">SHI<span>MQA</span></div>
+    </div>
+
+    <div class="content">
+      <div>
+        <div class="col-title">Контакты</div>
+        <div class="links">
+          <a href="https://t.me/deepfinal">Tg</a>
+          <a href="https://www.instagram.com/_shimqa_?igsh=MmQ0aWd1NzJub2hn&utm_source=qr">Insta</a>
+          <a href="https://discord.gg/5vFywrM3">Discord</a>
+          <a href="https://www.twitch.tv/sh1mqa">Twitch</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="col-title">Donate me</div>
+        <div class="links">
+          <a href="https://www.donationalerts.com/r/shimqa27">DonationAlerts</a>
+        </div>
+      </div>
+
+      <div class="work-block">
+        <div class="label">Work With Me:</div>
+        <a class="email" href="mailto:shimqa5727@gmail.com">shimqa5727@gmail.com</a>
+      </div>
+    </div>
+
+    <div class="meta-row">
+      <div>
+        Russia, Cheboksary
+      </div>
+      <div class="right">
+        © 2026 · ShimqaWW
+      </div>
+    </div>
+
+    <div class="wordmark">
+      <span>GG НЕ БУДЕТ</span>
+    </div>
+  </div>
+  <script type="module" src="./app.js"></script>
+  <script>
+    (function () {
+      const track = document.querySelector('[data-love-track]');
+      const fill = document.querySelector('[data-love-fill]');
+      const balls = document.querySelectorAll('[data-love-ball]');
+      if (!track || !fill || !balls.length) return;
+
+      const lastBall = balls[balls.length - 1];
+
+      function onScroll() {
+        const trackRect = track.getBoundingClientRect();
+        const lastBallRect = lastBall.getBoundingClientRect();
+        const viewportCenter = window.innerHeight / 2;
+
+        // максимальная высота линии — до центра последнего шарика
+        const maxFillPx = (lastBallRect.top + lastBallRect.height / 2) - trackRect.top;
+
+        // текущая высота линии от начала трека до центра вьюпорта
+        const filledPx = Math.min(Math.max(viewportCenter - trackRect.top, 0), Math.max(maxFillPx, 0));
+
+        fill.style.height = `${filledPx}px`;
+
+        // ===== для каждого шарика проверяем: дошла ли линия до него или дальше =====
+        balls.forEach((ball) => {
+          const ballRect = ball.getBoundingClientRect();
+          const ballOffset = (ballRect.top + ballRect.height / 2) - trackRect.top;
+
+          const isReached = filledPx >= ballOffset - 1; // -1px запас на погрешность округления
+
+          const stop = ball.closest('[data-love-stop]');
+          const text = stop ? stop.querySelector('[data-love-text]') : null;
+          const media = stop ? stop.querySelector('[data-love-media]') : null;
+
+          ball.classList.toggle('is-active', isReached);
+          if (text) text.classList.toggle('is-visible', isReached);
+          if (media) media.classList.toggle('is-visible', isReached);
+        });
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll);
+      onScroll();
+    })();
+  </script>
+  <script>
+    (function () {
+      const section = document.querySelector('[data-weightless]');
+      const sticky = document.querySelector('[data-weightless-sticky]');
+      const items = document.querySelectorAll('[data-float-item]');
+      const center = document.querySelector('.weightless-center');
+      if (!section || !sticky || !items.length) return;
+
+      const SCROLL_RANGE = 3200;
+      section.style.height = `calc(100vh + ${SCROLL_RANGE}px)`;
+
+      const phases = Array.from(items).map(() => Math.random() * Math.PI * 2);
+
+      let mouseX = 0;
+      let mouseY = 0;
+      let parallaxX = 0;
+      let parallaxY = 0;
+
+      function onMouseMove(e) {
+        const rect = sticky.getBoundingClientRect();
+        mouseX = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
+        mouseY = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
+      }
+
+      function onScroll() {
+        const rect = section.getBoundingClientRect();
+        const start = rect.top;
+
+        let progress = 0;
+        if (start <= 0) {
+          progress = Math.min(Math.max(-start, 0), SCROLL_RANGE);
+        }
+
+        const t = progress / SCROLL_RANGE;
+
+        parallaxX += (mouseX - parallaxX) * 0.06;
+        parallaxY += (mouseY - parallaxY) * 0.06;
+
+        items.forEach((item, i) => {
+          const speed = parseFloat(getComputedStyle(item).getPropertyValue('--speed')) || 1;
+          const rot = parseFloat(getComputedStyle(item).getPropertyValue('--rot')) || 0;
+          const w = parseFloat(getComputedStyle(item).getPropertyValue('--w')) || 100;
+
+          const liftVh = t * 90 * speed;
+          const rotate = t * rot;
+
+          const pulse = 1 + Math.sin(t * Math.PI * 5 + phases[i]) * 0.06 * (0.3 + t);
+
+          const depthFactor = (200 - w) / 200;
+          const px = parallaxX * 18 * (0.5 + depthFactor);
+          const py = parallaxY * 14 * (0.5 + depthFactor);
+
+          item.style.transform =
+            `translate(${px}px, calc(-${liftVh}vh + ${py}px)) rotate(${rotate}deg) scale(${pulse})`;
+          item.style.opacity = Math.max(1 - t * 0.3, 0.4);
+        });
+
+        if (center) {
+          const sway = Math.sin(t * Math.PI * 3) * 6;
+          const tilt = Math.sin(t * Math.PI * 3) * 2.5;
+          const cPx = parallaxX * 8;
+          const cPy = parallaxY * 6;
+          center.style.transform = `translate(${sway + cPx}px, ${cPy}px) rotate(${tilt}deg)`;
+        }
+      }
+
+      let raf = null;
+      function loop() {
+        onScroll();
+        raf = requestAnimationFrame(loop);
+      }
+
+      sticky.addEventListener('mousemove', onMouseMove);
+      window.addEventListener('resize', onScroll);
+
+      loop();
+    })();
+  </script>
+
+  <script>
+    (function () {
+      const section = document.querySelector('[data-hcircle]');
+      const sticky = document.querySelector('[data-hcircle-sticky]');
+      const stage = document.querySelector('[data-hcircle-stage]');
+      const items = Array.from(document.querySelectorAll('[data-hc-item]'));
+      const atmoLayers = document.querySelectorAll('[data-atmo-depth]');
+      if (!section || !sticky || !stage || !items.length) return;
+
+      const RADIUS = 1300;
+      const SPACING = 460;
+      const ANGLE_STEP = SPACING / RADIUS;
+      const SCROLL_PER_SLOT = 700;
+
+      let scrollDistance = 0;
+
+      function setup() {
+        const totalSlots = items.length - 1;
+        scrollDistance = totalSlots * SCROLL_PER_SLOT;
+        section.style.height = `calc(100vh + ${scrollDistance}px)`;
+      }
+
+      function layout(progress) {
+        const currentSlot = progress / SCROLL_PER_SLOT;
+
+        let focusItem = null;
+        let focusDist = Infinity;
+
+        items.forEach((item, i) => {
+          const slotDiff = (i + 0.5) - currentSlot;
+          const angle = slotDiff * ANGLE_STEP;
+
+          const x = Math.sin(angle) * RADIUS;
+          const y = (1 - Math.cos(angle)) * RADIUS * 0.55;
+          const rotateDeg = angle * (180 / Math.PI) * 0.6;
+          const scale = Math.max(0.55, Math.cos(angle) * 1.05);
+          const opacity = Math.max(0.08, Math.cos(angle) * 1.3);
+
+          item.style.transform =
+            `translate3d(${x - item.offsetWidth / 2}px, ${y - item.offsetHeight / 2}px, 0) rotate(${rotateDeg}deg) scale(${scale})`;
+          item.style.opacity = opacity;
+          item.style.zIndex = Math.round(scale * 100);
+
+          if (Math.abs(slotDiff) < focusDist) {
+            focusDist = Math.abs(slotDiff);
+            focusItem = item;
+          }
+        });
+
+        items.forEach(it => it.classList.toggle('is-focus', it === focusItem));
+      }
+
+      function updateAtmoParallax(progress) {
+        atmoLayers.forEach((layer) => {
+          const depth = parseFloat(layer.dataset.atmoDepth);
+          const shift = progress * depth * -0.3;
+          layer.style.transform = `translate3d(0, ${shift}px, 0)`;
+        });
+      }
+
+      function onScroll() {
+        const rect = section.getBoundingClientRect();
+        const start = rect.top;
+        let progress = 0;
+        if (start <= 0) {
+          progress = Math.min(Math.max(-start, 0), scrollDistance);
+        }
+        layout(progress);
+        updateAtmoParallax(progress);
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', () => { setup(); onScroll(); });
+
+      setup();
+      onScroll();
+    })();
+  </script>
+
+  <script>
+    function fitHeroName() {
+      const layers = document.querySelectorAll('.hero-name');
+
+      layers.forEach(el => {
+        el.style.transform = 'none';
+
+        const parent = el.parentElement;
+        const containerWidth = parent.clientWidth;
+        const containerHeight = parent.clientHeight;
+
+        const textWidth = el.scrollWidth;
+        const textHeight = el.scrollHeight;
+
+        if (textWidth > 0 && textHeight > 0) {
+          const scaleX = (containerWidth / textWidth) * 2;
+          const scaleY = (containerHeight / textHeight) * 2.7;
+          el.style.transform = `scale(${scaleX}, ${scaleY})`;
+        }
+      });
+    }
+
+    document.fonts.ready.then(fitHeroName);
+    window.addEventListener('resize', fitHeroName);
+  </script>
+
+  <script>
+    (function () {
+      const section = document.querySelector('[data-flashlight]');
+      const cover = document.querySelector('[data-fl-cover]');
+      const photos = document.querySelectorAll('[data-fl-photo]');
+      if (!section || !cover) return;
+
+      const RADIUS = 190;
+      const FLEE_RADIUS = 220;
+      const FLEE_POWER = 110;
+
+      section.addEventListener('pointermove', (e) => {
+        const rect = section.getBoundingClientRect();
+        const mx = e.clientX - rect.left;
+        const my = e.clientY - rect.top;
+
+        cover.style.setProperty('--fmx', `${mx}px`);
+        cover.style.setProperty('--fmy', `${my}px`);
+
+        photos.forEach((photo) => {
+          const pRect = photo.getBoundingClientRect();
+          const px = pRect.left - rect.left + pRect.width / 2;
+          const py = pRect.top - rect.top + pRect.height / 2;
+
+          const dx = px - mx;
+          const dy = py - my;
+          const dist = Math.hypot(dx, dy);
+
+          if (dist < FLEE_RADIUS) {
+            const angle = Math.atan2(dy, dx);
+            const strength = (1 - dist / FLEE_RADIUS) * FLEE_POWER;
+            const moveX = Math.cos(angle) * strength;
+            const moveY = Math.sin(angle) * strength;
+            photo.style.transform = `translate(${moveX}px, ${moveY}px)`;
+          } else {
+            photo.style.transform = 'translate(0, 0)';
+          }
+        });
+      });
+
+      section.addEventListener('pointerleave', () => {
+        cover.style.setProperty('--fmx', '-600px');
+        cover.style.setProperty('--fmy', '-600px');
+        photos.forEach((photo) => {
+          photo.style.transform = 'translate(0, 0)';
+        });
+      });
+    })();
+  </script>
+
+  <script>
+    (function () {
+      let target = window.scrollY;
+      let current = window.scrollY;
+      const ease = 0.09;
+      let ticking = false;
+
+      function clamp(v) {
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        return Math.max(0, Math.min(v, max));
+      }
+
+      function onWheel(e) {
+        e.preventDefault();
+        target = clamp(target + e.deltaY);
+        if (!ticking) {
+          ticking = true;
+          requestAnimationFrame(update);
+        }
+      }
+
+      function update() {
+        current += (target - current) * ease;
+        if (Math.abs(target - current) < 0.5) {
+          current = target;
+          window.scrollTo(0, current);
+          ticking = false;
+          return;
+        }
+        window.scrollTo(0, current);
+        requestAnimationFrame(update);
+      }
+
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          target = window.scrollY;
+          current = window.scrollY;
+        }
+      });
+
+      window.addEventListener('wheel', onWheel, { passive: false });
+    })();
+  </script>
+
+  <!-- ============================================================
+       SECTION FADE-IN OBSERVER — плавное появление секций при скролле
+       ============================================================ -->
+  <script>
+    (function () {
+      const sections = document.querySelectorAll('[data-screen-label]');
+      if (!sections.length) return;
+
+      sections.forEach(sec => {
+        const bg = sec.dataset.sectionBg || getComputedStyle(sec).backgroundColor;
+        sec.style.setProperty('--section-bg', bg);
+      });
+
+      if (!('IntersectionObserver' in window)) {
+        sections.forEach(sec => sec.classList.add('in-view'));
+        return;
+      }
+
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            io.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.12,
+        rootMargin: '0px 0px -8% 0px'
+      });
+
+      sections.forEach(sec => io.observe(sec));
+    })();
+  </script>
+
+</body>
+
+</html>

@@ -2381,7 +2381,7 @@ s .hero-name::after {
   .meta-row {
     left: 20px;
     right: 20px;
-    bottom: 170px;
+    bottom: 120px;
 
     font-size: 11px;
   }

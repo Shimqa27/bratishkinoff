@@ -199,7 +199,7 @@
   text-transform: uppercase;
   line-height: 1;
   color: var(--accent);
-  font-size: var(--type-impact);
+  font-size: var(--hero-base);
 
   pointer-events: none;
 }

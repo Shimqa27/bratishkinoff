@@ -2381,7 +2381,7 @@ s .hero-name::after {
   .meta-row {
     left: 20px;
     right: 20px;
-    bottom: 120px;
+    bottom: 170px;
 
     font-size: 11px;
   }
@@ -2447,7 +2447,7 @@ s .hero-name::after {
     left: 20px;
     right: 20px;
     bottom: 95px;
-    
+
     flex-direction: row;
     justify-content: space-between;
   }
@@ -2482,83 +2482,88 @@ s .hero-name::after {
     text-align: center;
   }
 }
+
 /* ============================================================
    FOOTER — MOBILE ADAPTATIONS
    ============================================================ */
 @media (max-width:900px) {
-  .stage{
-    height:auto;
-    min-height:auto;
-    padding-bottom:40px;
+  .stage {
+    height: auto;
+    min-height: auto;
+    padding-bottom: 40px;
   }
 
-  .topbar{
-    padding:24px 24px 0 24px;
+  .topbar {
+    padding: 24px 24px 0 24px;
   }
 
-  .content{
-    padding:0 24px;
-    flex-direction:column;
-    align-items:flex-start;
-    gap:32px;
+  .content {
+    padding: 0 24px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
   }
 
-  .col-title{
-    margin-bottom:16px;
+  .col-title {
+    margin-bottom: 16px;
   }
 
-  .links{
-    gap:12px;
+  .links {
+    gap: 12px;
   }
 
-  .work-block{
-    max-width:none;
-    width:100%;
+  .work-block {
+    max-width: none;
+    width: 100%;
   }
 
-  .work-block .label{
-    font-size:20px;
+  .work-block .label {
+    font-size: 20px;
   }
 
-  .work-block .email{
-    font-size:20px;
-    word-break:break-all; /* длинный email не должен вылезать за экран */
+  .work-block .email {
+    font-size: 20px;
+    word-break: break-all;
+    /* длинный email не должен вылезать за экран */
   }
 
-  .meta-row{
-    padding:0 24px 24px 24px;
-    flex-direction:column;
-    align-items:flex-start;
-    gap:8px;
+  .meta-row {
+    padding: 0 24px 24px 24px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    margin-top: 48px;
   }
 
-  .meta-row .right{
-    text-align:left; /* было right — на узкой колонке правое выравнивание смотрится оторванным */
+  .meta-row .right {
+    text-align: left;
+    /* было right — на узкой колонке правое выравнивание смотрится оторванным */
   }
 
-  .wordmark{
-    position:relative;
-    inset:auto;
-    padding:40px 20px 0;
+  .wordmark {
+    position: relative;
+    inset: auto;
+    padding: 40px 20px 0;
   }
 
-  .wordmark span{
-    font-size:clamp(40px, 15vw, 90px); /* "GG НЕ БУДЕТ" — 12 символов, на 90px+ уже не влезает в 360px без переноса */
-    white-space:normal;
-    line-height:0.95;
+  .wordmark span {
+    font-size: clamp(40px, 15vw, 90px);
+    /* "GG НЕ БУДЕТ" — 12 символов, на 90px+ уже не влезает в 360px без переноса */
+    white-space: normal;
+    line-height: 0.95;
   }
 }
 
 @media (max-width:420px) {
-  .col-title{
-    font-size:15px;
+  .col-title {
+    font-size: 15px;
   }
 
-  .links a{
-    font-size:15px;
+  .links a {
+    font-size: 15px;
   }
 
-  .work-block .email{
-    font-size:17px;
+  .work-block .email {
+    font-size: 17px;
   }
 }

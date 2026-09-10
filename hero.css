@@ -2279,6 +2279,7 @@ s .hero-name::after {
     line-height: 1.1;
 
     letter-spacing: -0.02em;
+    margin-top: 150px;
   }
 
   .meta-row .right {
@@ -2384,6 +2385,7 @@ s .hero-name::after {
     bottom: 170px;
 
     font-size: 11px;
+    margin-top: 150px;
   }
 
   .wordmark {
@@ -2450,6 +2452,7 @@ s .hero-name::after {
 
     flex-direction: row;
     justify-content: space-between;
+    margin-top: 150px;
   }
 
   .meta-row .right {
@@ -2566,4 +2569,28 @@ s .hero-name::after {
   .work-block .email {
     font-size: 17px;
   }
+}
+.stage {
+  display: flex;
+  flex-direction: column;
+}
+
+.wordmark {
+  position: static !important;
+  order: 1;
+}
+
+.meta-row {
+  position: static !important;
+  order: 2;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  gap: 8px;
+  padding: 0 24px 32px !important;
+  margin-top: 24px;
+}
+
+.meta-row .right {
+  text-align: left !important;
 }

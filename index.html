@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>BRATISHKIN</title>
+  <link rel="icon" type="image/png" href="img/logobrff.png">
   <meta name="description" content="bratishkinoff" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -160,7 +161,7 @@
     @media (min-width:1441px) and (max-width:1920px) {
       [data-hero] {
         --hero-base: calc(1920 / 1440);
-        --type-impact: calc(6rem * var(--hero-base));
+        --type-impact: calc(10rem * var(--hero-base));
         --type-display-lg: calc(4.375rem * var(--hero-base));
         --type-display: calc(3.25rem * var(--hero-base));
         --type-heading: calc(2.375rem * var(--hero-base));
@@ -1058,29 +1059,7 @@
   </script>
 
   <script>
-    function fitHeroName() {
-      const layers = document.querySelectorAll('.hero-name');
-
-      layers.forEach(el => {
-        el.style.transform = 'none';
-
-        const parent = el.parentElement;
-        const containerWidth = parent.clientWidth;
-        const containerHeight = parent.clientHeight;
-
-        const textWidth = el.scrollWidth;
-        const textHeight = el.scrollHeight;
-
-        if (textWidth > 0 && textHeight > 0) {
-          const scaleX = (containerWidth / textWidth) * 2;
-          const scaleY = (containerHeight / textHeight) * 2.7;
-          el.style.transform = `scale(${scaleX}, ${scaleY})`;
-        }
-      });
-    }
-
-    document.fonts.ready.then(fitHeroName);
-    window.addEventListener('resize', fitHeroName);
+    
   </script>
 
   <script>
